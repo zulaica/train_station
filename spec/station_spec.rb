@@ -8,10 +8,21 @@ describe(Station) do
     end
   end
 
-  # describe(".find") do 
+  # describe(".find") do
   #   it("returns as list of stations by their ID number") do
-  #     test_station = Station.new({:name => "36th Chamber", :id => nil})
+  #     test_station = Station.new({:name => "", :id => nil})
   #     test_station.save()
   #
+  describe("#save") do
+    it("lets you save stations to the database") do
+      station = Station.new({:name => "Don Rodriguez Ave", :id => nil})
+      station.save()
+      expect(Station.all()).to(eq([station]))
+    end
+  end
+
+
+
+
 
 end
