@@ -27,5 +27,4 @@ class Line
     self.name().eql?(another_line.name()).&(self.id().eql?(another_line.id()))
   end
 
-
 end

@@ -49,7 +49,4 @@ describe(Station) do
     end
   end
 
-
-
-
 end
