@@ -21,6 +21,13 @@ describe(Station) do
     end
   end
 
+  describe("#==") do
+    it("makes sure stations are equal if they share a name") do
+      station1 = Station.new({:name => "36th Chamber", :id => nil})
+      station2 = Station.new({:name => "36th Chamber", :id => nil})
+      expect(station1).to(eq(station2))
+    end
+  end
 
 
 
