@@ -2,7 +2,7 @@ class Line
 
   attr_reader(:name, :id)
 
-  define_method(:initialize) do |atrributes|
+  define_method(:initialize) do |attributes|
     @name = attributes.fetch(:name)
     @id = attributes.fetch(:id)
   end
@@ -17,4 +17,10 @@ class Line
     end
     lines
   end
+
+  define_method(:==) do |another_line|
+    self.name().eql?(another_line.name()).&(self.id().eql?(another_line.id()))
+  end
+
+
 end
