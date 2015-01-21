@@ -8,6 +8,14 @@ describe(Line) do
     end
   end
 
+  describe('#save') do
+    it("saves a line to the database") do
+      test_line = Line.new({:name => "White Line", :id => nil})
+      test_line.save()
+      expect(Line.all()).to(eq([test_line]))
+    end
+  end
+
   describe("#==") do
     it("makes sure lines are equal if they share a name") do
       line1 = Line.new({:name => "White Line", :id => nil})

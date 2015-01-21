@@ -18,6 +18,11 @@ class Line
     lines
   end
 
+  define_method(:save) do
+    result = DB.exec("INSERT INTO lines (name) VALUES ('#{@name}') RETURNING id;")
+    @id = result.first().fetch("id").to_i()
+  end
+
   define_method(:==) do |another_line|
     self.name().eql?(another_line.name()).&(self.id().eql?(another_line.id()))
   end
