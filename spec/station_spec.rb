@@ -26,10 +26,25 @@ describe(Station) do
     end
   end
 
+  describe("#name") do
+    it("tells you the station name") do
+      station = Station.new({:name => "Shaolin Station", :id => nil})
+      expect(station.name()).to(eq("Shaolin Station"))
+    end
+  end
+
+  describe("#id") do
+    it("sets the ID when you save it") do
+      station = Station.new({:name => "Killer Bees Station", :id => nil})
+      station.save()
+      expect(station.id()).to(be_an_instance_of(Fixnum))
+    end
+  end
+
   describe("#==") do
     it("makes sure stations are equal if they share a name") do
-      station1 = Station.new({:name => "36th Chamber", :id => nil})
-      station2 = Station.new({:name => "36th Chamber", :id => nil})
+      station1 = Station.new({:name => "36th and Chamber Pl", :id => nil})
+      station2 = Station.new({:name => "36th and Chamber Pl", :id => nil})
       expect(station1).to(eq(station2))
     end
   end
