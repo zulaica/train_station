@@ -18,6 +18,16 @@ class Station
     stations
   end
 
+  define_singleton_method(:find) do |id|
+    found_station = nil
+    Station.all().each() do |station|
+      if station.id().eql?(id)
+        found_station = station
+      end
+    end
+    found_station
+  end
+
   define_method(:save) do
     result = DB.exec("INSERT INTO stations (name) VALUES ('#{@name}') RETURNING id;")
     @id = result.first().fetch("id").to_i()
