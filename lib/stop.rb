@@ -18,4 +18,9 @@ class Stop
     stops
   end
 
+
+  define_method(:==) do |another_stop|
+    self.station_id().eql?(another_stop.station_id()).&(self.line_id().eql?(another_stop.line_id()))
+  end
+
 end
