@@ -8,6 +8,7 @@ describe(Stop) do
     end
   end
 
+  # TO DO
   # describe(".find_station") do
   #   it("return a list of lines for a station based on the station_id") do
   #
@@ -16,7 +17,6 @@ describe(Stop) do
 
   describe("#save") do
     it("pairs a station's ID to a line's ID") do
-# binding.pry
       test_station = Station.new({:name => "Gravel Pit", :id => nil})
       test_station.save()
       test_line = Line.new({:name => "White Line", :id => nil})
@@ -34,6 +34,5 @@ describe(Stop) do
       expect(stop1).to(eq(stop2))
     end
   end
-
 
 end

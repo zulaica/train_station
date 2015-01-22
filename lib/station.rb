@@ -34,7 +34,7 @@ class Station
   end
 
   define_method(:add_line) do |line_id|
-    the_stop = Stop.new({:station_id => self.id(), :line_id => line_id })
+    the_stop = Stop.new({:station_id => self.id(), :line_id => line_id})
   end
 
   define_method(:==) do |another_station|
