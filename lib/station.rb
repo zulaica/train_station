@@ -33,6 +33,10 @@ class Station
     @id = result.first().fetch("id").to_i()
   end
 
+  define_method(:add_line) do |line_id|
+    the_stop = Stop.new({:station_id => self.id(), :line_id => line_id })
+  end
+
   define_method(:==) do |another_station|
     self.name().==(another_station.name()).&(self.id().==(another_station.id()))
   end

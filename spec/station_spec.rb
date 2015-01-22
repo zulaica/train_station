@@ -41,6 +41,18 @@ describe(Station) do
     end
   end
 
+  describe("#add_line") do
+    it("associates a Line with a Station") do
+      station = Station.new({:name => "Brooklyn Zoo", :id => nil})
+      station.save()
+      line = Line.new({:name => "White Line", :id => nil})
+      line.save()
+      the_stop = Stop.new({:station_id => station.id(), :line_id => line.id()})
+      the_stop.save()
+      expect(Stop.all()).to(eq([the_stop]))
+    end
+  end
+
   describe("#==") do
     it("makes sure stations are equal if they share a name") do
       station1 = Station.new({:name => "36th and Chamber Pl", :id => nil})
