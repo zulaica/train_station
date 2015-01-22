@@ -3,39 +3,8 @@ class Stop
   attr_reader(:station_id, :line_id)
 
   define_method(:initialize) do |attributes|
-    ##########
-    #
-    # Dear Joey (Part 2. Don't worry about. It makes sense. I figured this part
-    # out after the problem below),
-    #
-    # So, basically, we stupid damn burned through declaring our stupid damn
-    # instance variables and didn't stupid damn fetch them from the stupid damn
-    # attributes. Also, since stupid damn databases return strings, I had to set
-    # the stupid damn id variables to stupid damn integers.
-    #
-    # Smooches,
-    # David
-    #
-    # # Broken Code Example
-    # @station_id = station_id
-    # @line_id = line_id
-    # #
-    #
-    ##########
     @station_id = attributes.fetch(:station_id).to_i()
     @line_id = attributes.fetch(:line_id).to_i()
-    ##########
-    #
-    # Dear Joey,
-    #
-    # So, basically, the stupid damn Stop#save was freaking out because we were
-    # assigning a stupid damn value to stupid damn @id without stupid damn
-    # declaring it first when we stupid damn initialized.
-    #
-    # Smooches,
-    # David
-    #
-    ##########
     @id = nil
   end
 
