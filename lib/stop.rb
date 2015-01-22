@@ -1,6 +1,6 @@
 class Stop
 
-  attr_reader(:station_id, :line_id)
+  attr_reader(:id, :station_id, :line_id)
 
   define_method(:initialize) do |attributes|
     @station_id = attributes.fetch(:station_id).to_i()
