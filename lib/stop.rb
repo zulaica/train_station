@@ -19,6 +19,17 @@ class Stop
     stops
   end
 
+  define_singleton_method(:find_station_lines) do |station_id|
+    station_lines = []
+    returned_stops = DB.exec("SELECT * FROM stops WHERE station_id = #{station_id};")
+    returned_stops.each() do |stop|
+      line_id = stop.fetch("line_id").to_i()
+      line_name = DB.exec("SELECT name FROM lines WHERE id = #{line_id};").getvalue(0,0)
+      station_lines.push(line_name)
+    end
+    station_lines
+  end
+
   define_method(:save) do
     result = DB.exec("INSERT INTO stops (station_id, line_id) VALUES (#{@station_id}, #{@line_id}) RETURNING id;")
     @id = result.first().fetch("id").to_i()

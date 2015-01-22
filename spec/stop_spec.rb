@@ -8,12 +8,21 @@ describe(Stop) do
     end
   end
 
-  # TO DO
-  # describe(".find_station") do
-  #   it("return a list of lines for a station based on the station_id") do
-  #
-  #   end
-  # end
+  describe(".find_station_lines") do
+    it("return a list of lines for a station based on the station_id") do
+      test_station = Station.new({:name => "36th and Chamber Pl", :id => nil})
+      test_station.save()
+      test_line1 = Line.new({:name => "White Line", :id => nil})
+      test_line1.save()
+      test_line2 = Line.new({:name => "Grey Line", :id => nil})
+      test_line2.save()
+      test_line3 = Line.new({:name => "Black Line", :id => nil})
+      test_line3.save()
+      test_station.add_line(test_line1.id())
+      test_station.add_line(test_line3.id())
+      expect(Stop.find_station_lines(test_station.id())).to(eq([test_line1.name(), test_line3.name()]))
+    end
+  end
 
   describe("#save") do
     it("pairs a station's ID to a line's ID") do
